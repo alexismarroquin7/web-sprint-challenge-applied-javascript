@@ -55,7 +55,7 @@ const Card = (article) => {
 }
 
 
-console.log(Card({headline: 'Shocking News!', authorPhoto: 'authorPhotoURL', authorName: 'Alexis Marroquin'}))
+// console.log(Card({headline: 'Shocking News!', authorPhoto: 'authorPhotoURL', authorName: 'Alexis Marroquin'}))
 
 
 const cardAppender = (selector) => {
@@ -69,7 +69,80 @@ const cardAppender = (selector) => {
   //
   axios.get('https://lambda-times-api.herokuapp.com/articles')
     .then(response => {
-      console.log(response.data.articles);
+      const myArticles = response.data.articles;
+      console.log(myArticles);
+
+      const bootstrapArticles = myArticles.bootstrap;
+      const javascriptArticles = myArticles.javascript;
+      const jqueryArticles = myArticles.jquery;
+      const nodeArticles = myArticles.node;
+      const techArticles = myArticles.technology;
+
+      bootstrapArticles.forEach(article => {
+        // console.log(article.headline);
+        // console.log(article.authorName);
+        // console.log(article.authorPhoto);
+        const bsCard = Card(
+          {
+            headline: article.headline,
+            authorPhoto: article.authorPhoto,
+            authorName: article.authorName
+          }
+        );
+        document.querySelector(selector).appendChild(bsCard);
+      });
+      javascriptArticles.forEach(article => {
+        // console.log(article.headline);
+        // console.log(article.authorName);
+        // console.log(article.authorPhoto);
+        const jsCard = Card(
+          {
+            headline: article.headline,
+            authorPhoto: article.authorPhoto,
+            authorName: article.authorName
+          }
+        );
+        document.querySelector(selector).appendChild(jsCard);
+      });
+      jqueryArticles.forEach(article => {
+        // console.log(article.headline);
+        // console.log(article.authorName);
+        // console.log(article.authorPhoto);
+        const jqCard = Card(
+          {
+            headline: article.headline,
+            authorPhoto: article.authorPhoto,
+            authorName: article.authorName
+          }
+        );
+        document.querySelector(selector).appendChild(jqCard);
+      });
+      nodeArticles.forEach(article => {
+        // console.log(article.headline);
+        // console.log(article.authorName);
+        // console.log(article.authorPhoto);
+        const nodeCard = Card(
+          {
+            headline: article.headline,
+            authorPhoto: article.authorPhoto,
+            authorName: article.authorName
+          }
+        );
+        document.querySelector(selector).appendChild(nodeCard);
+      });
+      techArticles.forEach(article => {
+        // console.log(article.headline);
+        // console.log(article.authorName);
+        // console.log(article.authorPhoto);
+        const techCard = Card(
+          {
+            headline: article.headline,
+            authorPhoto: article.authorPhoto,
+            authorName: article.authorName
+          }
+        );
+        document.querySelector(selector).appendChild(techCard);
+      });
     })
     .catch(err => {
       console.log(err, 'Oops, looks like something went wrong.')
