@@ -30,7 +30,7 @@ const Header = (title, date, temp) => {
 
   return header
 }
-
+// 
 // console.log(Header(`My title`, `My date`, `My temp`))
 
 const headerAppender = (selector) => {
